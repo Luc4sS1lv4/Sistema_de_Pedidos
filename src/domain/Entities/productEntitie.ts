@@ -1,7 +1,10 @@
+import type { Decimal } from "@prisma/client/runtime/library"
+
+
 export class Product {
     constructor(
         private nome: string,
-        private preco: number,
+        private preco: Decimal,
         private estoque: number
     ) { }
 
