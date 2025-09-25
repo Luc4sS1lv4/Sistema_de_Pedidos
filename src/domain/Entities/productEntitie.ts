@@ -18,5 +18,6 @@ export class Product {
         return this.estoque
     }
 
+    
 
 }
