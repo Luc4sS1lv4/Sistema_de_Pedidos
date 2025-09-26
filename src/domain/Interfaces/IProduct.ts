@@ -1,5 +1,5 @@
 import type { Decimal } from "@prisma/client/runtime/library";
-import type { Product } from "../Entities/productEntitie.js";
+
 
 export type PRODUCT = {
     id: number
