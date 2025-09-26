@@ -3,6 +3,7 @@ import type { Decimal } from "@prisma/client/runtime/library"
 
 export class Product {
     constructor(
+        private id: number,
         private nome: string,
         private preco: Decimal,
         private estoque: number
@@ -17,7 +18,13 @@ export class Product {
     getEstoque() {
         return this.estoque
     }
+    getId() {
+        return this.id
+    }
 
+    //setdiminuirEstoque(quantidade:number){
+      //  return this.estoque - quantidade
+    //}
     
 
 }

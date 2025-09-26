@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Produto{
-  id    Int  @id @default(autoincrement())
+  id   Int  @id @default(autoincrement())
   nome  String  @db.VarChar(50)
   preco   Decimal  @db.Decimal(10,2)
   estoque Int

@@ -1,4 +1,3 @@
-import { create } from "ts-node";
 import type { Product } from "../../domain/Entities/productEntitie.js";
 import type { IProduct } from "../../domain/Interfaces/IProduct.js";
 

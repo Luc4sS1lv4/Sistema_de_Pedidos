@@ -1,17 +1,11 @@
+import type { Product } from "./productEntitie.js"
+
 export class Order{
     constructor(
-        private total:number,
-        private quantidade: number,
-        private produto: number
+        private id: number ,
+        public readonly total:number,
+        public readonly quantidade: number,
+        public readonly produto: { produto: Product}
     ){}
 
-    getTotal(){
-        return this.total
-    }
-    getQuantidade(){
-        return this.quantidade
-    }
-    getProduto(){
-        return this.produto
-    }
 }

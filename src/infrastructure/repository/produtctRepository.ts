@@ -5,17 +5,17 @@ import { Product } from "../../domain/Entities/productEntitie.js";
 export class ProductRepositpry implements IProduct {
     constructor(private ProdRepository: PrismaClient) { }
 
-    findById = async (nome: string) => {
+    findById = async (Product: Product) => {
         const produtos = await this.ProdRepository.produto.findMany({
             where: {
-                nome
+                id: Product.getId()
             }
         })
-        return produtos.map(p => new Product(p.nome, p.preco, p.estoque))
+        return produtos
     }
 
-    create = async (Product: PRODUCT): Promise<Product> => {
-        const produtoNew: any = await this.ProdRepository.produto.create({
+    create = async (Product: PRODUCT): Promise<PRODUCT> => {
+        const produtoNew = await this.ProdRepository.produto.create({
             data: {
                 nome: Product.nome,
                 estoque: Product.estoque,

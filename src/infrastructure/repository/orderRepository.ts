@@ -9,15 +9,12 @@ export class OrderRepository implements IOrder {
     async save(order: Order): Promise<void> {
         await this.PrismaORM.pedidos.create({
             data: {
-                total: order.getTotal(),
-                itens: {
-                    create: {
-                        quantidade: order.getQuantidade(),
-                        produtos: {
-                            connect: { id: order.getProduto() }
-                        }
-                    }
-                }
+                total: order.total,
+                itens: order.produto.produto.getId()
+                    ? {
+                        connect: { id: order.produto.produto.getId() }
+                    } : {}
+            
             }
         });
     }
