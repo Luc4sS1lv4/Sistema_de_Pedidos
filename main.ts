@@ -1,5 +1,6 @@
 import fastify from "fastify"
 import dotenv from "dotenv"
+import { Routers } from "./src/Http/routers/main.Router.js"
 
 dotenv.config()
 const app = fastify()
@@ -9,7 +10,7 @@ PORT: process.env.PORT ?? 3000,
 SECRET_KEY: process.env.SECRET_KEY
 }
 
-
+app.register(Routers)
 
 
 

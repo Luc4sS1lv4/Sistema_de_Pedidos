@@ -19,4 +19,10 @@ export class OrderService {
         return newPedido
 
     }
+
+    async listOrder(ORDER: Order){
+
+    }
 }
+
+//Ajustar Buusca para validação do pedido, realizar a implementação de um metodo que faça a busca de um produto em específico.

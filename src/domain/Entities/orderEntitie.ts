@@ -12,7 +12,7 @@ export class Order {
         return this.id
     }
 
-    totalValor(quantidade: number, peco: Decimal) {
+    totalValor(quantidade: number, preco: Decimal) {
         const Valortotal = quantidade * this.produto.getPreco().toNumber()
         return Decimal(Valortotal)
     }
