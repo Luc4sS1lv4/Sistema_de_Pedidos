@@ -5,10 +5,10 @@ import { Product } from "../../domain/Entities/productEntitie.js";
 export class ProductRepositpry implements IProduct {
     constructor(private ProdRepository: PrismaClient) { }
 
-    findById = async (Product: Product) => {
+    findById = async (id:number) => {
         const produtos = await this.ProdRepository.produto.findMany({
             where: {
-                id: Product.getId()
+                id
             }
         })
         return produtos

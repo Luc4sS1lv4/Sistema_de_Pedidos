@@ -9,6 +9,6 @@ export type PRODUCT = {
 }
 
 export interface IProduct{
-    findById(Product: Product): Promise<PRODUCT[]>
+    findById(id:number): Promise<PRODUCT[]>
     create(Product: PRODUCT): Promise<PRODUCT>
 }

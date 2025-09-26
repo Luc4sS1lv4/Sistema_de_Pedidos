@@ -1,29 +1,24 @@
-import type { Product } from "../../domain/Entities/productEntitie.js";
-import type { IProduct } from "../../domain/Interfaces/IProduct.js";
+import type { IProduct, PRODUCT } from "../../domain/Interfaces/IProduct.js";
 
 export class ProductService{
     constructor(private InterfaceReposiProduct: IProduct){}
 
-   async  CreateProdutc(Product: Product){
+   async  CreateProdutc(Product: PRODUCT){
         const produto = {
-            nome: Product.getNome(),
-            preco: Product.getPreco(),
-            estoque: Product.getEstoque()
+            id:Product.id,
+            nome: Product.nome,
+            preco: Product.preco,
+            estoque: Product.estoque
 
         }
 
         if(!produto.estoque || !produto.nome || !produto.preco) throw new Error("Todos os campos são obrigatórios")
 
-        const ProductExist = await this.InterfaceReposiProduct.findById(produto.nome)
+        const ProductExist = await this.InterfaceReposiProduct.findById(produto.id)
 
-        if(ProductExist){
-            ProductExist.map(p =>{
-                produto.estoque = p.getEstoque()
-            })
-            return ProductExist
-        }
+        if(ProductExist)throw new Error (`Produto Existente ${ProductExist}`)
 
-       const newProduct = await this.InterfaceReposiProduct.create({nome: produto.nome, preco: produto.preco, estoque:produto.estoque})
+       const newProduct = await this.InterfaceReposiProduct.create(produto)
 
        return newProduct
     }
