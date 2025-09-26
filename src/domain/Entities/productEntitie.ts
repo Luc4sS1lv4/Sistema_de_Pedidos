@@ -22,9 +22,9 @@ export class Product {
         return this.id
     }
 
-    //setdiminuirEstoque(quantidade:number){
-      //  return this.estoque - quantidade
-    //}
-    
+    setdiminuirEstoque(quantidade: number) {
+        return this.estoque - quantidade
+    }
+
 
 }

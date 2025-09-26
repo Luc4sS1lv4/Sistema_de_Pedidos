@@ -1,11 +1,10 @@
 import type { PrismaClient } from "@prisma/client";
 import type { IProduct, PRODUCT } from "../../domain/Interfaces/IProduct.js";
-import { Product } from "../../domain/Entities/productEntitie.js";
 
 export class ProductRepositpry implements IProduct {
     constructor(private ProdRepository: PrismaClient) { }
 
-    findById = async (id:number) => {
+    findById = async (id: number) => {
         const produtos = await this.ProdRepository.produto.findMany({
             where: {
                 id

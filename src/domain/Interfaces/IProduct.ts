@@ -8,7 +8,7 @@ export type PRODUCT = {
     estoque: number
 }
 
-export interface IProduct{
-    findById(id:number): Promise<PRODUCT[]>
+export interface IProduct {
+    findById(id: number): Promise<PRODUCT[]>
     create(Product: PRODUCT): Promise<PRODUCT>
 }

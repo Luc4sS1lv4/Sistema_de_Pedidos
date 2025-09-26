@@ -10,20 +10,20 @@ export class OrderRepository implements IOrder {
         await this.PrismaORM.pedidos.create({
             data: {
                 total: order.total,
-                itens: order.produto.produto.getId()
+                itens: order.produto.getId()
                     ? {
-                        connect: { id: order.produto.produto.getId() }
+                        connect: { id: order.produto.getId() }
                     } : {}
-            
+
             }
         });
     }
 
     async list(): Promise<ORDER[]> {
-        
+
         const pedidos = await this.PrismaORM.pedidos.findMany()
         return pedidos
-        
 
-}
+
+    }
 }
