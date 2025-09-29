@@ -1,6 +1,17 @@
 import fastify from "fastify"
 import dotenv from "dotenv"
 import { Routers } from "./src/Http/routers/main.Router.js"
+import { ProductRepositpry } from "./src/infrastructure/repository/produtctRepository.js"
+import Prisma from "./src/infrastructure/database/db.js"
+import { ProductService } from "./src/application/service/ProductService.js"
+
+
+// dependencias de Products 
+const produtoRepo = new ProductRepositpry(Prisma)
+
+
+
+
 
 dotenv.config()
 const app = fastify()
