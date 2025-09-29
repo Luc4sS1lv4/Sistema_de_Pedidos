@@ -5,9 +5,9 @@ export class OrderController{
     constructor(private ServiceOrder: OrderService){}
 
     createProductService = async (req: any, rep: any)=>{
-        const { id, produto, getId, totalValor, Order: {total, quantidade }} = req.body
+        const { produto, total, quantidade, data_pedido } = req.body
         try{
-            return rep.status(201).json(this.ServiceOrder.CreateOrder({ id, produto, getId, totalValor, Order: {total, quantidade} }))
+            return rep.status(201).json(this.ServiceOrder.CreateOrder({produto, total, quantidade, data_pedido}))
         }catch (e:any){
             return rep.status(400).json({Erro: e.message})
         }

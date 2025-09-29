@@ -3,7 +3,7 @@ import type { Product } from "../Entities/productEntitie.js";
 
 
 export type ORDER = {
-    total: Decimal
+    total?: Decimal
     quantidade: number
     produto?: Product
     data_pedido: Date
