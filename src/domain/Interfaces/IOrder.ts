@@ -1,14 +1,16 @@
 import type { Decimal } from "@prisma/client/runtime/library";
-import type { Order } from "../Entities/orderEntitie.js";
+import type { Product } from "../Entities/productEntitie.js";
+
 
 export type ORDER = {
-    total: Decimal,
-    data_pedido: Date,
-    id: number
+    total: Decimal
+    quantidade: number
+    produto?: Product
+    data_pedido: Date
 }
 
 export interface IOrder {
-    save(order: Order): Promise<void>
-    list(id: number): Promise<ORDER[]>
+    save(order: ORDER): Promise<void>
+    list(id:number): Promise<ORDER[]>
 }
 

@@ -3,9 +3,10 @@ import type { Product } from "./productEntitie.js"
 export class Order {
     constructor(
         private id: number,
-        public total: Decimal,
-        public readonly quantidade: number,
-        public readonly produto: Product
+        public total: Decimal | null,
+        public quantidade: number,
+        public produto?: Product,
+        private data_pedido?: Date
     ) { }
 
     getId() {
@@ -13,11 +14,13 @@ export class Order {
     }
 
     totalValor(quantidade: number, preco: Decimal) {
-        const Valortotal = quantidade * this.produto.getPreco().toNumber()
+        const Valortotal = quantidade * preco.toNumber()
         return Decimal(Valortotal)
     }
 
-
+    getData(){
+        return this.data_pedido
+    }
 
 
 }

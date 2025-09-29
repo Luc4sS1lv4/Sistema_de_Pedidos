@@ -1,4 +1,4 @@
-import type { ProductService } from "../../application/service/createProductService.js";
+import type { ProductService } from "../../application/service/ProductService.js";
 
 export class ProductController{
     constructor(private ServicProduct: ProductService){}
