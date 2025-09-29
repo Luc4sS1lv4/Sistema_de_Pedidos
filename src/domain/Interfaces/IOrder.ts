@@ -11,3 +11,4 @@ export interface IOrder {
     save(order: Order): Promise<void>
     list(id: number): Promise<ORDER[]>
 }
+
