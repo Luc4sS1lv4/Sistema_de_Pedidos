@@ -5,8 +5,16 @@ import { ProductRepositpry } from "./src/infrastructure/repository/produtctRepos
 import Prisma from "./src/infrastructure/database/db.js"
 import { ProductService } from "./src/application/service/ProductService.js"
 import { ProductController } from "./src/Http/controller/product.Controller.js"
+import { OrderRepository } from "./src/infrastructure/repository/orderRepository.js"
+import { OrderService } from "./src/application/service/OrderService.js"
+import { OrderController } from "./src/Http/controller/order.controller.js"
 
 
+
+//dependencias de Orders
+const orderReposi = new OrderRepository(Prisma)
+const orderService = new OrderService(orderReposi)
+const orderController = new OrderController(orderService)
 
 
 // dependencias de Products 
@@ -33,4 +41,4 @@ app.listen({port:env.PORT},()=>{
     console.log(`server is running in port: ${env.PORT}`)
 })
 
-export default {produtoController}
+export {produtoController, orderController}

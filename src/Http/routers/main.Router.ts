@@ -1,8 +1,6 @@
 import type { FastifyInstance } from "fastify";
-
+import {produtoController, orderController} from "../../../main.js"
 
 export function Routers(fastify: FastifyInstance){
-    fastify.get("/", (req, rep)=>{
-        rep.send("Rota funcionando")
-    })
+    fastify.post("/orders", orderController.createProductService)
 }
