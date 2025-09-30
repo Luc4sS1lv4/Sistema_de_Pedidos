@@ -4,7 +4,7 @@ import type { IOrder, ORDER } from "../../domain/Interfaces/IOrder.js";
 
 export class OrderRepository implements IOrder {
     constructor(private PrismaORM: PrismaClient
-    ) {}
+    ) { }
 
     async save(order: ORDER): Promise<void> {
         await this.PrismaORM.pedidos.create({
@@ -13,8 +13,8 @@ export class OrderRepository implements IOrder {
                 quantidade: order.quantidade,
                 data_pedido: order.data_pedido,
                 produtos: order.produto?.getId() ? {
-                        connect: { id: order.produto.getId() }
-                    }: {}
+                    connect: { id: order.produto.getId() }
+                } : {}
 
             }
         });
@@ -22,12 +22,14 @@ export class OrderRepository implements IOrder {
 
     async list(id: number): Promise<ORDER[]> {
 
-        const pedidos = await this.PrismaORM.pedidos.findMany({where:{
-            id
-        }, include:{
-            produtos: true
-        }})
-        
+        const pedidos = await this.PrismaORM.pedidos.findMany({
+            where: {
+                id
+            }, include: {
+                produtos: true
+            }
+        })
+
         return pedidos
     }
 }

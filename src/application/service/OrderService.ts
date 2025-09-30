@@ -1,22 +1,25 @@
 import { Order } from "../../domain/Entities/orderEntitie.js";
-import type { IOrder, ORDER} from "../../domain/Interfaces/IOrder.js";
+import type { IOrder } from "../../domain/Interfaces/IOrder.js";
 
 export class OrderService {
-    constructor(private OrderREpository: IOrder,
-                private OrderEnitie: Order
+    constructor(private OrderREpository: IOrder
     ) { }
 
-    async CreateOrder(ORDER: ORDER) {
+    async CreateOrder(ORDER: Order) {
 
-        const { total, quantidade, produto} = ORDER
+        const { total, quantidade, produto, getId, totalValor } = ORDER
         if (!total || !quantidade || !produto) throw new Error("por favor preencha todas as informações do produtos")
 
-        const pedidos = await this.OrderREpository.list(this.OrderEnitie.getId())
+        const pedidos = await this.OrderREpository.list(getId())
 
         if (pedidos) throw new Error("Pedido ja existe deverá ser criado outro")
-        ORDER.total = this.OrderEnitie.totalValor(quantidade, produto.preco)
+        ORDER.total = totalValor(quantidade, produto.preco)
 
-        const newPedido = await this.OrderREpository.save(ORDER)
+        const newPedido = await this.OrderREpository.save({
+            total, quantidade,
+            produto,
+            data_pedido: new Date()
+        })
 
         return newPedido
 

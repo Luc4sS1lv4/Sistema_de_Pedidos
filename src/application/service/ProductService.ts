@@ -1,5 +1,5 @@
 import type { Product } from "../../domain/Entities/productEntitie.js";
-import type { IProduct, PRODUCT } from "../../domain/Interfaces/IProduct.js";
+import type { IProduct } from "../../domain/Interfaces/IProduct.js";
 
 
 export class ProductService {
