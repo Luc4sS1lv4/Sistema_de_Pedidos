@@ -1,5 +1,6 @@
 import type { PrismaClient } from "@prisma/client";
 import type { IOrder, ORDER } from "../../domain/Interfaces/IOrder.js";
+import type { PRODUCT } from "../../domain/Interfaces/IProduct.js";
 
 
 export class OrderRepository implements IOrder {
@@ -12,23 +13,20 @@ export class OrderRepository implements IOrder {
                 total: order.total ? order.total : 0.00,
                 quantidade: order.quantidade,
                 data_pedido: order.data_pedido,
-                produtos: order.produto?.getId() ? {
-                    connect: { id: order.produto.getId() }
-                } : {}
+                produtos: {
+                    connect:{id: order.produto}
+                }
 
             }
         });
     }
 
-    async find(id: number): Promise<ORDER[]> {
+    async find(id: number): Promise<PRODUCT[]> {
 
-        const pedidos = await this.PrismaORM.pedidos.findMany({
+        const pedidos = await this.PrismaORM.produto.findMany({
             where: {
-                id
-            }, include: {
-                produtos: true
-            }
-        })
+            id
+        }})
 
         return pedidos
     }
