@@ -11,6 +11,6 @@ export type ORDER = {
 
 export interface IOrder {
     save(order: ORDER): Promise<void>
-    list(id:number): Promise<ORDER[]>
+    find(id:number): Promise<ORDER[]>
 }
 

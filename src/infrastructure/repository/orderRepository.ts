@@ -20,7 +20,7 @@ export class OrderRepository implements IOrder {
         });
     }
 
-    async list(id: number): Promise<ORDER[]> {
+    async find(id: number): Promise<ORDER[]> {
 
         const pedidos = await this.PrismaORM.pedidos.findMany({
             where: {
