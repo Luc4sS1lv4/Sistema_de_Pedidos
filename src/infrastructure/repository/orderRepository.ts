@@ -1,6 +1,6 @@
 import type { PrismaClient } from "@prisma/client";
 import type { IOrder, ORDER } from "../../domain/Interfaces/IOrder.js";
-import type { PRODUCT } from "../../domain/Interfaces/IProduct.js";
+
 
 
 export class OrderRepository implements IOrder {
@@ -21,13 +21,14 @@ export class OrderRepository implements IOrder {
         });
     }
 
-    async find(id: number): Promise<PRODUCT[]> {
+    async find(id: number): Promise<any> {
 
-        const pedidos = await this.PrismaORM.produto.findMany({
+        const pedidos = await this.PrismaORM.produto.findUnique({
             where: {
-            id
+              id
         }})
 
         return pedidos
+        
     }
 }

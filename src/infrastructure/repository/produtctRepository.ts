@@ -19,8 +19,8 @@ export class ProductRepositpry implements IProduct {
                 nome: Product.nome,
                 estoque: Product.estoque,
                 preco: Product.preco
-            }
+            } 
         })
         return produtoNew
     }
-}
+} 

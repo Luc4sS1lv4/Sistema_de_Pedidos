@@ -34,6 +34,6 @@ model Itens_Pedidos{
   produto_Id    Int
   pedidos_Id    Int
 
-  pedidos   Pedidos @relation(fields: [pedidos_Id], references: [id])
+  pedidos   Pedidos @relation(fields: [pedidos_Id], references: [id]) 
   produtos  Produto @relation(fields: [produto_Id], references: [id])
 }

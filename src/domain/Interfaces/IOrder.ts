@@ -1,5 +1,5 @@
 import type { Decimal } from "@prisma/client/runtime/library";
-import type { PRODUCT } from "./IProduct.js";
+
 
 
 export type ORDER = {
@@ -11,7 +11,6 @@ export type ORDER = {
 
 export interface IOrder {
     save(order: ORDER): Promise<void>
-    find(id:number): Promise<
-    PRODUCT[]>
+    find(id:number): Promise<ORDER>
 }
 

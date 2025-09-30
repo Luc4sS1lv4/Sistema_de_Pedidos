@@ -11,9 +11,9 @@ export class OrderService {
         
         if (!total || !quantidade || !produto) throw new Error("por favor preencha todas as informações do produtos")
 
-        const produ = this.OrderREpository.find(produto)
+       
 
-        if(!produ) throw new Error("Produto não existe")
+    
 
         const newPedido = await this.OrderREpository.save({
             total,
