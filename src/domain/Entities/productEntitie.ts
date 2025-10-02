@@ -9,7 +9,7 @@ export class Product {
         public estoque: number
     ) { }
 
-  
+
     getId() {
         return this.id
     }

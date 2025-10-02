@@ -2,7 +2,7 @@ import type { IProduct, PRODUCT } from "../../domain/Interfaces/IProduct.js";
 
 
 export class ProductService {
-    constructor(private InterfaceReposiProduct: IProduct) {}
+    constructor(private InterfaceReposiProduct: IProduct) { }
 
     async CreateProdutc(Product: PRODUCT) {
         const produto = {

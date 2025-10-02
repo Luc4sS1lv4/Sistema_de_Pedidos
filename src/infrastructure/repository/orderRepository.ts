@@ -10,10 +10,10 @@ export class OrderRepository implements IOrder {
     async save(order: ORDER1): Promise<void> {
         await this.PrismaORM.pedidos.create({
             data: {
-                total: order.total, 
+                total: order.total,
                 data_pedido: order.data_pedido,
                 produtos: {
-                    connect:{id: order.produto}
+                    connect: { id: order.produto }
                 }
 
             }
@@ -24,10 +24,11 @@ export class OrderRepository implements IOrder {
 
         const pedidos = await this.PrismaORM.produto.findUnique({
             where: {
-              id
-        }})
+                id
+            }
+        })
 
         return pedidos
-        
+
     }
 }

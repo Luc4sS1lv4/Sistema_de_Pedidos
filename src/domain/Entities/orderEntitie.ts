@@ -18,7 +18,7 @@ export class Order {
         return Decimal(Valortotal)
     }
 
-    getData(){
+    getData() {
         return this.data_pedido
     }
 
