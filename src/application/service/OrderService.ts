@@ -1,5 +1,5 @@
 
-import type { IOrder, ORDER } from "../../domain/Interfaces/IOrder.js";
+import type { IOrder, ORDER, ORDER1 } from "../../domain/Interfaces/IOrder.js";
 
 export class OrderService {
     constructor(private OrderREpository: IOrder
@@ -9,18 +9,17 @@ export class OrderService {
 
         const { total, quantidade, produto } = ORDER
         
-        if (!total || !quantidade || !produto) throw new Error("por favor preencha todas as informações do produtos")
-
-       
-
+        if (!total || !produto || !quantidade) throw new Error("por favor preencha todas as informações do produtos")
     
-
-        const newPedido = await this.OrderREpository.save({
+        const newPedido = produto.forEach((item) =>{
+            this.OrderREpository.save({
             total,
             quantidade,
-            produto,
+            produto: item,
             data_pedido: new Date()
         })
+        })
+        
 
         return newPedido
 

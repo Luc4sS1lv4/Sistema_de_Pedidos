@@ -1,5 +1,5 @@
 import type { PrismaClient } from "@prisma/client";
-import type { IOrder, ORDER } from "../../domain/Interfaces/IOrder.js";
+import type { IOrder, ORDER, ORDER1 } from "../../domain/Interfaces/IOrder.js";
 
 
 
@@ -7,11 +7,10 @@ export class OrderRepository implements IOrder {
     constructor(private PrismaORM: PrismaClient
     ) { }
 
-    async save(order: ORDER): Promise<void> {
+    async save(order: ORDER1): Promise<void> {
         await this.PrismaORM.pedidos.create({
             data: {
-                total: order.total ? order.total : 0.00,
-                quantidade: order.quantidade,
+                total: order.total, 
                 data_pedido: order.data_pedido,
                 produtos: {
                     connect:{id: order.produto}

@@ -4,8 +4,8 @@ export class Order {
     constructor(
         private id: number,
         public total: Decimal | null,
-        public quantidade: number,
-        public produto?: Product,
+        public itens?: Product,
+        public quantidade?: number,
         private data_pedido?: Date
     ) { }
 

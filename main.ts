@@ -1,6 +1,6 @@
 import fastify from "fastify"
 import dotenv from "dotenv"
-import  formbody  from "@fastify/formbody"
+import formbody from "@fastify/formbody"
 import { Routers } from "./src/Http/routers/main.Router.js"
 import { ProductRepositpry } from "./src/infrastructure/repository/produtctRepository.js"
 import Prisma from "./src/infrastructure/database/db.js"
@@ -39,8 +39,8 @@ const produtoController = new ProductController(produtoServi)
 
 
 
-app.listen({port:env.PORT},()=>{
+app.listen({ port: env.PORT }, () => {
     console.log(`server is running in port: ${env.PORT}`)
 })
 
-export {produtoController, orderController}
+export { produtoController, orderController }

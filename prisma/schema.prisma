@@ -25,7 +25,6 @@ model Pedidos{
   id    Int   @id   @default(autoincrement())
   total   Decimal @db.Decimal(10,2)
   data_pedido   DateTime    @default(now())
-  quantidade    Int
   produtos     Itens_Pedidos[]
 }
 
@@ -33,6 +32,8 @@ model Itens_Pedidos{
   id    Int @id   @default(autoincrement())
   produto_Id    Int
   pedidos_Id    Int
+  quantidade    Int
+  preco_Unitario Decimal @db.Decimal(10,2)
 
   pedidos   Pedidos @relation(fields: [pedidos_Id], references: [id]) 
   produtos  Produto @relation(fields: [produto_Id], references: [id])
