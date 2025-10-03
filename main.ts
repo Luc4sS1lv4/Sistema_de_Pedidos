@@ -23,16 +23,16 @@ app.register(formbody)
 app.register(Routers)
 
 
-//dependencias de Orders
-const orderReposi = new OrderRepository(Prisma)
-const orderService = new OrderService(orderReposi)
-const orderController = new OrderController(orderService)
-
-
 // dependencias de Products 
 const produtoRepo = new ProductRepositpry(Prisma)
 const produtoServi = new ProductService(produtoRepo)
 const produtoController = new ProductController(produtoServi)
+
+//dependencias de Orders
+const orderReposi = new OrderRepository(Prisma)
+const orderService = new OrderService(orderReposi, produtoRepo)
+const orderController = new OrderController(orderService)
+
 
 
 

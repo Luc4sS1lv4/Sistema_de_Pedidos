@@ -1,8 +1,11 @@
 
-import type { IOrder, ORDER, ORDER1 } from "../../domain/Interfaces/IOrder.js";
+import { Decimal } from "@prisma/client/runtime/library";
+import type { IOrder, ORDER} from "../../domain/Interfaces/IOrder.js";
+import type { IProduct } from "../../domain/Interfaces/IProduct.js";
 
 export class OrderService {
-    constructor(private OrderREpository: IOrder
+    constructor(private OrderREpository: IOrder,
+                private ProductRepository: IProduct
     ) { }
 
     async CreateOrder(ORDER: ORDER) {
@@ -11,17 +14,15 @@ export class OrderService {
 
         if (!total || !produto || !quantidade) throw new Error("por favor preencha todas as informações do produtos")
 
-        const newPedido = produto.forEach((item) => {
-            this.OrderREpository.save({
-                total,
-                quantidade,
-                produto: item,
-                data_pedido: new Date()
-            })
-        })
+        const preco_total: number[] = [0]
+        const productExistis = await this.ProductRepository.findById(produto.podutoId)
+
+        if(!productExistis) throw new Error("produto bão existe")
+        
+           
 
 
-        return newPedido
+        
 
     }
 
