@@ -4,7 +4,6 @@ import type { Decimal } from "@prisma/client/runtime/library";
 
 export type ORDER = {
     total: Decimal
-    quantidade: number
     produto: {
         podutoId: number,
         quantidade: number

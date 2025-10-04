@@ -10,9 +10,9 @@ export class OrderService {
 
     async CreateOrder(ORDER: ORDER) {
 
-        const { total, quantidade, produto } = ORDER
+        const { total, produto } = ORDER
 
-        if (!total || !produto || !quantidade) throw new Error("por favor preencha todas as informações do produtos")
+        if (!total || !produto) throw new Error("por favor preencha todas as informações do produtos")
 
         const productExistis = await this.ProductRepository.findById(produto.podutoId)
 
@@ -21,13 +21,12 @@ export class OrderService {
         }
 
         const preco_total = productExistis.reduce((acc, item) => {
-            return acc + (item.preco.toNumber() * quantidade)
+            return acc + (item.preco.toNumber() * produto.quantidade)
         }, 0)
 
         const totais = Decimal(preco_total)
         return this.OrderREpository.save({
             total: totais,
-            quantidade,
             data_pedido: new Date(),
             produto
         })
