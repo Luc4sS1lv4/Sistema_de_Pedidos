@@ -26,7 +26,7 @@ export class OrderService {
         const totais = Decimal(preco_total)
 
 
-       productExistis.map(i => {
+        productExistis.map(i => {
             this.OrderREpository.save({
                 total: totais,
                 data_pedido: new Date(),
@@ -34,13 +34,13 @@ export class OrderService {
                     podutoId: ORDER.produto,
                     quantidade: ORDER.quantidade,
                     preco_unitario: i.preco
-            }
+                }
             })
 
         })
         return productExistis
 
-        
+
     }
 
 }
