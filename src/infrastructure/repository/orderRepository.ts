@@ -7,19 +7,24 @@ export class OrderRepository implements IOrder {
     constructor(private PrismaORM: PrismaClient
     ) { }
 
-    async save(order: ORDER): Promise<void> {
-        await this.PrismaORM.pedidos.create({
+    async save(order: ORDER): Promise<any> {
+        const newPedido = await this.PrismaORM.pedidos.create({
             data: {
                 total: order.total,
                 data_pedido: order.data_pedido,
                 produtos: {
-                    connect: { id: order.produto.podutoId },
+                    create: {
+                        quantidade: order.produto.quantidade,
+                        preco_Unitario: order.produto.preco_unitario,
+                        produtos: {
+                            connect: { id: order.produto.podutoId }
+                        }
+                    }
                 }
             },
-            include: {
-                produtos: true
-            }
+            include: { produtos: true }
         });
+        return newPedido
     }
 
     async find(id: number): Promise<any> {

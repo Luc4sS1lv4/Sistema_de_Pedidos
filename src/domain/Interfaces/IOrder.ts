@@ -7,6 +7,7 @@ export type ORDER = {
     produto: {
         podutoId: number,
         quantidade: number
+        preco_unitario: Decimal
     }
     data_pedido: Date
 }
